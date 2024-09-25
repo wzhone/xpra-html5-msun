@@ -673,6 +673,11 @@ class XpraClient {
   }
 
   _route_packet(packet) {
+    if(packet[0] === 'close'){
+      window.location.replace('connect.html')
+      this.close()
+      return
+    }
     // ctx refers to `this` because we came through a callback
     const packet_type = Utilities.s(packet[0]);
     this.debug("network", "received a", packet_type, "packet");
